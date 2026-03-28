@@ -17,14 +17,13 @@
             overflow: hidden;
         }
 
-        /* Properly scaled GIF */
         .bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain; /* prevents zoom/crop */
+            object-fit: contain;
         }
     </style>
 </head>
@@ -33,10 +32,27 @@
     <!-- GIF -->
     <img src="noneedfor.help/media/background.gif" class="bg">
 
-    <!-- Audio -->
-    <audio autoplay loop>
+    <!-- AUDIO -->
+    <audio id="music" loop>
         <source src="noneedfor.help/media/song.mp3" type="audio/mpeg">
     </audio>
+
+    <script>
+        const audio = document.getElementById("music");
+
+        function playAudio() {
+            audio.play().catch(() => {});
+            window.removeEventListener("mousemove", playAudio);
+            window.removeEventListener("click", playAudio);
+            window.removeEventListener("keydown", playAudio);
+            window.removeEventListener("scroll", playAudio);
+        }
+
+        window.addEventListener("mousemove", playAudio);
+        window.addEventListener("click", playAudio);
+        window.addEventListener("keydown", playAudio);
+        window.addEventListener("scroll", playAudio);
+    </script>
 
 </body>
 </html>
