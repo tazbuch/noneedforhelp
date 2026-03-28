@@ -17,13 +17,14 @@
             overflow: hidden;
         }
 
+        /* Best balance: fills screen without stretching */
         .bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover; /* fills screen cleanly */
         }
     </style>
 </head>
@@ -33,25 +34,21 @@
     <img src="noneedfor.help/media/background.gif" class="bg">
 
     <!-- AUDIO -->
-    <audio id="music" loop>
+    <audio id="music" autoplay loop muted playsinline>
         <source src="noneedfor.help/media/song.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         const audio = document.getElementById("music");
 
-        function playAudio() {
+        // try to unmute ASAP when browser allows it
+        function tryUnmute() {
+            audio.muted = false;
             audio.play().catch(() => {});
-            window.removeEventListener("mousemove", playAudio);
-            window.removeEventListener("click", playAudio);
-            window.removeEventListener("keydown", playAudio);
-            window.removeEventListener("scroll", playAudio);
         }
 
-        window.addEventListener("mousemove", playAudio);
-        window.addEventListener("click", playAudio);
-        window.addEventListener("keydown", playAudio);
-        window.addEventListener("scroll", playAudio);
+        document.addEventListener("click", tryUnmute);
+        document.addEventListener("mousemove", tryUnmute);
     </script>
 
 </body>
