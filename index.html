@@ -2,38 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>no need for help.</title>
+    <title>Background</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
-        body, html {
+        html, body {
             width: 100%;
             height: 100%;
+            background: black;
             overflow: hidden;
         }
 
+        /* Properly scaled GIF */
         .bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
+            object-fit: contain; /* prevents zoom/crop */
         }
     </style>
 </head>
 <body>
 
-    <img src="https://noneedfor.help/media/background.gif" class="bg">
+    <!-- GIF -->
+    <img src="noneedfor.help/media/background.gif" class="bg">
 
+    <!-- Audio -->
     <audio autoplay loop>
-        <source src="https://noneedfor.help/media/song.mp3" type="audio/mpeg">
+        <source src="noneedfor.help/media/song.mp3" type="audio/mpeg">
     </audio>
 
 </body>
