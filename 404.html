@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>no need for help</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay-text {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Impact", "Comic Sans MS", "Verdana", sans-serif;
+      font-size: 3rem;
+      color: #4d4d4d;
+      text-shadow: 0 0 8px #001652, 0 0 16px #0013b9;
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+      animation: flash 0.6s infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes flash {
+      0% {
+        opacity: 0.2;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<video id="vid" autoplay loop muted playsinline>
+  <source src="media/copy_5C3AED5D-F572-41AB-81C9-22127093B84B.mp4" type="video/mp4">
+</video>
+
+<div class="overlay-text">click screen</div>
+
+<script>
+  document.addEventListener("click", () => {
+    const v = document.getElementById("vid");
+    v.muted = false;
+    v.play();
+    document.querySelector(".overlay-text").style.display = "none";
+  });
+</script>
+
+</body>
+</html>
